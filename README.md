@@ -34,7 +34,7 @@ Thus, when I saw this challenge, I knew I had to keep everything simple and cons
 2. Vue - The second method was to use JQuery alongside VueJS. This would allow me to do similar functions to React, while keeping dependency load to a minimum. **Minified VueJS w/ JQuery:** 83.8KB + misc. external loads.
 3. JQuery - The third method was to use only JQuery with a minified Axios import. This would allow me to siginificantly reduce dependency load as compared to React/Vue. **Minified JQuery + Axios:** 36.6KB + misc. external loads.
 
-After exploring my options, I decided to go with JQuery. For such a small web app, it was important to keep the dependencies to an absolute minimum, and JQuery + Axios at 36.6KB, let me do exactly that. In the future, though, if upgradeability where to be kept in mind, a framework similar to VueJS (or Mithral if looking for extreme dependency savings) should be used.
+After exploring my options, I decided to go with JQuery. For such a small web app, it was important to keep the dependencies to an absolute minimum, and JQuery + Axios at 36.6KB, let me do exactly that. In the future though, if upgradeability were to be kept in mind, a framework similar to VueJS (or Mithral if looking for extreme dependency savings) should be used.
 
 ## Code breakdown
 This is the fancy section for developers and the people assessing this solution at Shopify :bowtie:! The uncompressed versions of the files also include this breakdown in more depth.
@@ -139,14 +139,14 @@ function parseHTML(html) {
 }
 ```
 ## Results
-After successfully completing the challenge, I conducted a benchmark on the website (while still hosted on Github Pages), to analyze performance:
+After successfully completing the challenge, I conducted a benchmark on the website (while still being hosted on Github Pages, thus, slightly impacting results), to analyze performance:
 
 | Test               | Score | Link | Description |
 |--------------------|-------|------|-------------|
 | Google Lighthouse Desktop  | 100%   |[Lighthouse](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fanish-agnihotri.github.io%2Ftoronto-waste-wizard%2F&tab=desktop)      | Maximum score achieved for Google Lighthouse Desktop.|
-| Google Lighthouse Mobile  | 98%   |[Lighthouse](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fanish-agnihotri.github.io%2Ftoronto-waste-wizard%2F&tab=mobile)      |2% lost due to webfont rendering (font-awesome). In the future, using single search SVG would increase this score to 100%.|
-| PageSpeed 1.15-gt1 | 99%   |[GTmetrix](https://gtmetrix.com/reports/anish-agnihotri.github.io/d9dkOSed)      |1% lost due to not leveraging browser caching. Moving from Github Pages to an external host, and appropriatley setting up the .htaccess for cache would increase this score to 100%.|
-| YSlow 3.1.8        | 95%   |[GTmetrix](https://gtmetrix.com/reports/anish-agnihotri.github.io/d9dkOSed)      |5% lost due to not using expires headers, and the Axios CDN storing cookies. Appropriatley setting up the .htaccess and changing the source for the Axios import would increase this score to 100%.|
+| Google Lighthouse Mobile  | 98%   |[Lighthouse](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fanish-agnihotri.github.io%2Ftoronto-waste-wizard%2F&tab=mobile)      |2% lost due to webfont rendering (font-awesome). In the future, using a single SVG for the search button icon would increase this score to 100%.|
+| PageSpeed 1.15-gt1 | 99%   |[GTmetrix](https://gtmetrix.com/reports/anish-agnihotri.github.io/d9dkOSed)      |1% lost due to not leveraging browser caching. Moving from Github Pages to an external host, and appropriatley setting up the .htaccess for caching would increase this score to 100%.|
+| YSlow 3.1.8        | 95%   |[GTmetrix](https://gtmetrix.com/reports/anish-agnihotri.github.io/d9dkOSed)      |5% lost due to not using expires headers, and the Axios CDN storing cookies. Appropriatley setting up the .htaccess and changing the source or origin for the Axios import would increase this score to 100%.|
 
 Page metrics were also recorded:
 
