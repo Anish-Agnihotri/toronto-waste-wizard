@@ -1,0 +1,117 @@
+/* ---------- Global styling ---------- */
+body {
+    /* Remove margin and padding from body */
+    margin: 0;
+    padding: 0;
+
+    /* Import fonts */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.section {
+    width: 100%;
+    display: inline-block;
+}
+
+/* ---------- Header styling ---------- */
+.header {
+    text-align: center; /* Align Toronto Waste Wizard text to center */
+    padding: 15px 0px 15px 0px; /* Add top and bottom padding to section */
+
+    /* Linear Gradient - including browser compatibility */
+    background: #1d5895; /* Flat color background for very old browswers without gradient support */
+    background: -moz-linear-gradient(to right, #1D5895 0%, #23975D 100%); /* Support for FireFox 3.6 - 15 */
+    background: -webkit-linear-gradient(to right, #1D5895 0%, #23975D 100%); /* Support for Chrome 10 - 25, Safari 5.1 - 6 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d5895', endColorstr='#23975d',GradientType=1 ); /* Support for Internet Explorer 6 - 9, with horizontal gradient fallback */
+    background: linear-gradient(to right, #1D5895 0%, #23975D 100%); /* Support for all other browsers that support linear-gradient */
+}
+
+.header > h1 {
+    font-size: 3rem;
+    color: #ffffff;
+}
+
+/* ---------- Search styling ---------- */
+.search {
+    padding: 20px 20px 10px 20px; /* Padding around search inner items */
+    height: 60px; /* Setting fixed height for search dialouge */
+}
+
+.search > input {
+    height: 95%; /* A little smaller than the button because button has larger font-size. Thus, vertical-align is used to align both with each other */
+    padding-left: 5px; /* Slight padding to the inner left of the search box for aesthetics */
+    width: calc(100% - 130px); /* Set the width of the search input to a little less than 100% of the viewmodal width - (the width of the search button + 2 x 20px padding (left and right of search) + 20px margin between input and button) */
+    border-radius: 2px;
+    border: 1px solid #aaaaaa;
+    font-size: 1.4rem;
+    margin-right: 10px; /* 1/2 margin between input and button */
+    vertical-align: bottom; /* Used to align input field with button */
+}
+
+.search > button {
+    height: 100%;
+    width: 60px; /* Fixed width for button, equal to height of .search to ensure that button is (somewhat) square */
+    border-radius: 3px;
+    background-color: #269B66;
+    color: #ffffff;
+    border: none; /* Removing the border that is applied to buttons by default */
+    font-size: 2.1rem;
+    margin-left: 10px; /* 1/2 margin between input and button */
+    vertical-align: top; /* Used to align input field with button */
+
+    /* Box shadow - including browser compatibility */
+    -webkit-box-shadow: 0px 0px 10px -2px rgba(38, 155, 102, 0.4); /* Support for older Chrome + Safari */
+    -moz-box-shadow: 0px 0px 10px -2px rgba(38, 155, 102, 0.4); /* Support for older Firefox */
+    box-shadow: 0px 0px 10px -2px rgba(38, 155, 102, 0.4); /* Support for all other browsers that support box-shadow */
+}
+
+.search > button:hover {
+    background-color: rgb(23, 97, 64); /* Change search button color on hover, just a little bit of aesthetics */
+    transition: 0.1s ease-in-out; /* Quick fade-in-out transition for the search button hover color */
+}
+
+/* ---------- Results styling ---------- */
+.results {
+    padding: 0px 20px 20px 20px;
+}
+
+/* ---------- Favourites styling ---------- */
+.favourites {
+    padding: 0px 20px 20px 20px;
+    background-color: #F7FEFA;
+}
+
+.favourites > h1 {
+    color: #23965E;
+    font-size: 2.2rem;
+}
+
+/* ---------- Results + Favourites styling ---------- */
+.results, .favourites {
+    font-size: 1.2rem; /* Set the font-size of the table content across both the results and favourites section */
+}
+
+.star {
+    color: #A5A5A5;
+}
+
+.star:hover { 
+    color: rgb(83, 83, 83); /* Change star color on hover, just a little bit of aesthetics */
+    transition: 0.1s ease-in-out; /* Quick fade-in-out transition for the hover color */
+}
+
+td { 
+    padding: 10px; /* Padding for text in table row */
+}
+
+/* Favourited items - Class used when items are added to Favourite's list */
+.favourited {
+    color: #23965E !important;
+}
+
+.favourited:hover {
+    color: rgb(15, 68, 43) !Important; /* Change favourited star color on hover, just a little bit of aesthetics */
+    transition: 0.1s ease-in-out; /* Quick fade-in-out transition for the favourited hover color */
+}

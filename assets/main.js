@@ -2,6 +2,7 @@ let searchbar = $('.search > input');
 let submit = $('.search > button');
 let results = $('.results');
 let favourites = $('.favourites');
+let favouriteList = [];
 
 $(document).ready(function () {
 
@@ -40,8 +41,6 @@ function fulfillQuery() {
             });
         })
 }
-
-let favouriteList = [];
 
 function favourite(index) {
 
