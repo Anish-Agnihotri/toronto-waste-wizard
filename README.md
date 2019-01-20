@@ -3,7 +3,7 @@
 <p align="center">Simple web app to search the Toronto Waste Wizard database. Developed as a part of my application to the Shopify Summer 2019 Internship program.</p>
 
 ## Introduction
-For the Summer 2019 Shopify Internship session, individuals were challenged to make a web application for the Toronto Waste Wizard database. The instructions were as followed (checkmarks indicate instructions that I have fulfilled in this application):
+For the Summer 2019 Shopify Internship session, individuals were challenged to make a web application for the Toronto Waste Wizard database. The instructions were as follow (checkmarks indicate instructions that I have fulfilled in this application):
 
 ### Instructions
 - [X] Reproduce the design as provided in the [screenshot](https://cdn.shopify.com/static/web-eng-challenge-summer-2019/design.png), which displays example search results.
@@ -21,7 +21,7 @@ For the Summer 2019 Shopify Internship session, individuals were challenged to m
    - [X] Render a green star button *if the item has been favourited*.
    - [X] Clicking the green star button should remove the item from the saved list.
    
-## Development desicions
+## Development key-design desicions
 As a developer, I believe in 3 main idealogies: 
 
 1. **KISS** - Keep it simple, stupid.
