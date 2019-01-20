@@ -37,12 +37,13 @@ body {
 .search {
     padding: 20px 20px 10px 20px; /* Padding around search inner items */
     height: 60px; /* Setting fixed height for search dialouge */
+    width: calc(100% - 40px); /* Remove the 20px padding added to the left and right of the section from the width */
 }
 
 .search > input {
     height: 95%; /* A little smaller than the button because button has larger font-size. Thus, vertical-align is used to align both with each other */
     padding-left: 5px; /* Slight padding to the inner left of the search box for aesthetics */
-    width: calc(100% - 130px); /* Set the width of the search input to a little less than 100% of the viewmodal width - (the width of the search button + 2 x 20px padding (left and right of search) + 20px margin between input and button) */
+    width: calc(100% - 100px); /* Set the width of the search input to a little less than 100% of the viewmodal width - (the width of the search button + 1 x 20px padding (right of search) + 20px margin between input and button) */
     border-radius: 2px;
     border: 1px solid #aaaaaa;
     font-size: 1.4rem;
@@ -75,11 +76,13 @@ body {
 /* ---------- Results styling ---------- */
 .results {
     padding: 0px 20px 20px 20px;
+    width: calc(100% - 40px); /* Remove the 20px padding added to the left and right of the section from the width */
 }
 
 /* ---------- Favourites styling ---------- */
-.favourites {
+.favourites {   
     padding: 0px 20px 20px 20px;
+    width: calc(100% - 40px); /* Remove the 20px padding added to the left and right of the section from the width */
     background-color: #F7FEFA;
 }
 
