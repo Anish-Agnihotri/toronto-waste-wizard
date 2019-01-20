@@ -4,7 +4,7 @@ let submit = $('.search > button');
 let results = $('.results');
 let favourites = $('.favourites');
 
-// Initialize favourited items array
+// Initialize favourited items array. In the future, if favourite content is to be stored across browser sessions, cookies can be used with this and favourites to save content on refresh.
 let favouriteList = [];
 
 // Run on page ready, search events:
