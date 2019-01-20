@@ -2,7 +2,6 @@ let searchbar = $('.search > input');
 let submit = $('.search > button');
 let results = $('.results');
 let favourites = $('.favourites');
-let star = $('.star');
 
 $(document).ready(function () {
 
@@ -31,7 +30,7 @@ function fulfillQuery() {
             objects.forEach(function (item, index) {
 
                 if (`${objects[index].keywords}`.toLowerCase().indexOf(searchbar.val().toLowerCase()) !== -1) {
-                    queryResult += `<tr class='${index}'><td><a href='javascript: void(0);' class='star' onClick='favourite(${index});'><i class='fa fa-star'></i></a></td><td>${item.title}</td><td>${item.body}</td></tr>`;
+                    queryResult += `<tr class='${index}'><td><a href='javascript: void(0);' class='star' onClick='favourite(${index});'><i class='fa fa-star'></i></a></td><td>${item.title}</td><td>${parseHTML(item.body)}</td></tr>`;
                 }
                 results.html(queryResult);
             });
@@ -56,4 +55,9 @@ function favourite(index) {
         favouriteList.push(index);
     }
 
+}
+
+function parseHTML(html) {
+    var parsed = $("<div />").html(html).text();
+    return parsed;
 }
