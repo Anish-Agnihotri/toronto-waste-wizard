@@ -1,10 +1,9 @@
 /* Global styling */
+
 body {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -15,6 +14,7 @@ body {
 }
 
 /* Header styling */
+
 .header {
     text-align: center;
     background: linear-gradient(to right, #1D5895 0%, #23975D 100%);
@@ -27,11 +27,40 @@ body {
     color: #ffffff;
 }
 
-/* Search styling 
-.search > form > input {
-    padding: 17.5px 10px 17.5px 0px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}*/
+/* Search styling */
 
-/* responsiveness, fix font on small display */
+.search {
+    padding: 20px 20px 10px 20px;
+    height: 60px;
+}
+
+.search>input {
+    height: 95%;
+    padding-left: 5px;
+    width: calc(100% - 130px);
+    border-radius: 2px;
+    border: 1px solid #aaaaaa;
+    font-size: 1.4rem;
+    margin-right: 10px;
+    vertical-align: bottom;
+}
+
+.search>button {
+    height: 100%;
+    width: 60px;
+    border-radius: 3px;
+    background-color: #269B66;
+    color: #ffffff;
+    border: none;
+    font-size: 2.1rem;
+    margin-left: 10px;
+    vertical-align: top;
+    -webkit-box-shadow: 0px 0px 10px -2px rgba(38, 155, 102, 0.4);
+    -moz-box-shadow: 0px 0px 10px -2px rgba(38, 155, 102, 0.4);
+    box-shadow: 0px 0px 10px -2px rgba(38, 155, 102, 0.4);
+}
+
+/* Results styling */
+.results {
+    padding: 0px 20px 20px 20px;
+}
