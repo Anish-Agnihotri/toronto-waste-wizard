@@ -2,6 +2,7 @@ let searchbar = $('.search > input');
 let submit = $('.search > button');
 let results = $('.results');
 let favourites = $('.favourites');
+let star = $('.star');
 
 $(document).ready(function () {
 
@@ -30,30 +31,26 @@ function fulfillQuery() {
             objects.forEach(function(item, index) {
                  
                 if (`${objects[index].keywords}`.toLowerCase().indexOf(searchbar.val().toLowerCase()) !== -1) {
-                    queryResult += `<tr><td><a class='star ${index}' onClick='favourite();'><i class='fa fa-star'></i></a></td><td>${item.title}</td><td>${item.body}</td></tr>`;
+                    queryResult += `<tr class='${index}'><td><a class='star' onClick='favourite(${index});'><i class='fa fa-star'></i></a></td><td>${item.title}</td><td>${item.body}</td></tr>`;
                 } 
                 results.html(queryResult);
             });
         })
 }
 
-
 let favouriteList = [];
 
-function favourite() {
-    let attr = $(this).attr('class').replace('star ', '');
-
-    $('.star' + attr).click(function () {  
-        let attr = $(this).attr('class').replace('star ', '');
-        
-        if (favouriteList.includes(attr)) {
-            console.log('already inside');
-
-        }
-        else {
-            console.log('not inside');
-            $('.' + attr).css('color', '#000000 !important');
-            $('.' + attr).parent().parent().clone().appendTo(favourites);
-        }
-    });
+function favourite(index) {
+    if (favouriteList.includes(index)) {
+        $('.' + index).find('i').removeClass('favourited');
+        favourites.find('.' + index).remove();
+        console.log('it includes ' + index);
+        favouriteList.splice(favouriteList.indexOf(index), 1);
+    }
+    else {
+        $('.' + index).find('i').addClass('favourited');
+        $('.' + index).clone().appendTo(favourites);
+        console.log('it does not include ' + index);
+        favouriteList.push(index);
+    }
 }

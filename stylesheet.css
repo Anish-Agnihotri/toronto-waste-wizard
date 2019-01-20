@@ -81,15 +81,24 @@ body {
     font-size: 1.2rem;
 }
 
-.fa-star {
+.star {
     color: #A5A5A5;
 }
 
-.fa-star:hover { 
+.star:hover { 
     color: rgb(83, 83, 83);
     transition: 0.1s ease-in-out;
 }
 
 td { 
     padding: 10px;
+}
+
+.favourited {
+    color: #23965E !important;
+}
+
+.favourited:hover {
+    color: rgb(15, 68, 43) !Important;
+    transition: 0.1s ease-in-out;
 }
