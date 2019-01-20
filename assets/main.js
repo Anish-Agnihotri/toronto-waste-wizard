@@ -44,9 +44,9 @@ function fulfillQuery() {
 
                 /* 
                 Set the queryResult if the lowercase search term matches some value from the lowercase keywords from the API. 
-                In the future, if this was to be made more robust, the filter could be applied to the title and the body of the item too, by adding ${objects[index].title} and ${objects[index].body} to the if operator.
+                In order to make this more robust, the filter has been applied to the title and the body of the item too, by adding ${objects[index].title} and ${objects[index].body} to the if operator.
                 */
-                if (`${objects[index].keywords}`.toLowerCase().indexOf(searchbar.val().toLowerCase()) !== -1) {
+                if (`${objects[index].title} ${objects[index].keywords} ${objects[index].body}`.toLowerCase().indexOf(searchbar.val().toLowerCase()) !== -1) {
 
                     /* 
                     1. Assuming there is a match, set queryResult equal to the data in table rows. 
@@ -84,6 +84,6 @@ function favourite(index) {
 
 // Parse html content retrieved from the body
 function parseHTML(html) {
-    var parsed = $("<div />").html(html).text(); // Little trick that initializes a self-enclosed dummy div (<div />) and sets it's innerHTML to the content recieved from the body.
+    var parsed = $("<div />").html(html).text(); // Little trick that initializes a self-enclosed dummy div (<div />) and sets its innerHTML to the content recieved from the body.
     return parsed; // Then, the text() of that dummy div is returned, thus returning proper HTML content rather than the HTML in string.
 }
