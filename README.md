@@ -41,8 +41,103 @@ This is the fancy section for developers and the people assessing this solution 
 
 Since it's redundant to discuss the breakdown of the HTML & CSS, those comments have been kept in their respective files [here](https://github.com/Anish-Agnihotri/toronto-waste-wizard/blob/master/index.html) and [here](https://github.com/Anish-Agnihotri/toronto-waste-wizard/blob/master/assets/stylesheet.css). Thus, the following, is a line-by-line breakdown of only the JQuery:
 
-1. 
+### Setting up variables
+I setup variables at the beginning of the file in order to keep the code as clean as possible. This was done for both convience of reading the code, and for integrating respective functions. This block of code sets up the searchbar, submit button, results section div, and favourites section div. It also intializes an empty array which will later hold our favourite items.
+```js
+let searchbar = $('.search > input');
+let submit = $('.search > button');
+let results = $('.results');
+let favourites = $('.favourites');
 
+let favouriteList = [];
+```
+### Control search events
+Next, I setup search events that would run on page ready. First, is the `searchbar.keyup(function)` which controls two things: (1) it presses the submit button when key 13 (enter) is pressed, and (2) it sets the innerHTML of the results div to being empty when the searchbar is empty. Following this, the `submit.click(function)` handles the button click. It runs the `fulfillQuery();` function.
+```js
+$(document).ready(function () {
+
+    searchbar.keyup(function (key) {
+        if (key.which === 13) {
+            submit.click();
+        }
+        if (searchbar.val() === '') {
+            results.html('');
+        }
+    });
+
+    submit.click(function () {
+        fulfillQuery();
+    });
+
+});
+```
+
+### fulfillQuery(); function to render results
+Since this is such a large function, the explanation for the function has been directly placed into comments throughout the code, for readability:
+```js
+// Render results to results section
+function fulfillQuery() {
+
+    // Request to the API.
+    axios.get('https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000')
+        .then((response) => {
+            // Let return response = objects
+            let objects = response.data;
+            // Initialize queryResult which will host the HTML we are pushing to the DOM at the end of this function
+            let queryResult = '';
+
+            // For each item in the data response:
+            objects.forEach(function (item, index) {
+
+                /* 
+                Set the queryResult if the lowercase search term matches some value from the lowercase keywords from the API. 
+                In order to make this more robust, the filter has been applied to the title and the body of the item too, by adding ${objects[index].title} and ${objects[index].body} to the if operator.
+                */
+                if (`${objects[index].title} ${objects[index].keywords} ${objects[index].body}`.toLowerCase().indexOf(searchbar.val().toLowerCase()) !== -1) {
+
+                    /* 
+                    1. Assuming there is a match, set queryResult equal to the data in table rows. 
+                    2. Set the onClick of the star to push its unique index number with it, and set this number to the class of the row as well. 
+                    3. Use the parseHTML function (defined later) to parse the HTML content retrieved in the body.
+                    */
+                    queryResult += `<tr class='${index}'><td><a href='javascript: void(0);' class='star' onClick='favourite(${index});'><i class='fa fa-star'></i></a></td><td>${item.title}</td><td>${parseHTML(item.body)}</td></tr>`;
+                }
+                // Output the HTML we added to queryResult to the results section
+                results.html(queryResult);
+            });
+
+            // Loop through the favourites list and add the .favourited class to the fa-star of any index items in it. If no favourites, nothing happens. If, let's say, index(36) is favourited, it'll add the class to the <i> of that item.
+            jQuery.each(favouriteList, function () {
+                $('.' + this).find('i').addClass('favourited');
+            });
+        })
+}
+```
+### favourite(); function to handle favourites
+The `favourite();` function is used to handle favouriting and un-favouriting waste items. It takes the item `${index}` from the Axios request, and adds/removes items from the previously initalized `favouriteList` array. If the array already includes the item, the function removes the `favourited` class from the star (thus turning it gray), removes the item from the `favourites` section, and uses the items position in the array to splice it out. Otherwise, if the array does not include the item and a user presses the star, the function adds the `favourited` class to the star, appends the item to the `favourites` section, and pushes the index value of the item to the `favouriteList` array.
+```js
+function favourite(index) {
+
+    if (favouriteList.includes(index)) {
+        $('.' + index).find('i').removeClass('favourited');
+        favourites.find('.' + index).remove(); 
+        favouriteList.splice(favouriteList.indexOf(index), 1);
+    } else {
+        $('.' + index).find('i').addClass('favourited'); 
+        $('.' + index).clone().appendTo(favourites); 
+        favouriteList.push(index);
+    }
+
+}
+```
+### parseHTML(); function to parse HTML content
+Finally, the `parseHTML();` function converts the body data recieved from the API to html content. It does so by using a little trick that initializes a self-enclosed `div` tag, and sets the innerHTML of this tag to the data from the API. Then, the `text()` value of this aforemenetioned tag is returned.
+```js
+function parseHTML(html) {
+    var parsed = $("<div />").html(html).text();
+    return parsed; 
+}
+```
 ## Results
 After successfully completing the challenge, I conducted a benchmark on the website (while still hosted on Github Pages), to analyze performance:
 
