@@ -22,8 +22,26 @@ For the Summer 2019 Shopify Internship session, individuals were challenged to m
    - [X] Clicking the green star button should remove the item from the saved list.
    
 ## Development desicions
+As a developer, I believe in 3 main idealogies: 
+
+1. **KISS** - Keep it simple, stupid.
+2. **DRY** - Don't repeat yourself.
+3. **DLBM** - Do less, be more.
+
+Thus, when I saw this challenge, I knew I had to keep everything simple and consice. For such a small web application (only one API request, and some basic content rendering), I didn't want to re-invent the wheel. The three solutions I explored were:
+
+1. React - The first method was to use React, create components for the search, and use Axios to process changes. **Minifed React + ReactDOM**: 133KB + misc. external loads.
+2. Vue - The second method was to use JQuery alongside VueJS. This would allow me to do similar functions to React, while keeping dependency load to a minimum. **Minified VueJS w/ JQuery:** 83.8KB + misc. external loads.
+3. JQuery - The third method was to use only JQuery with a minified Axios import. This would allow me to siginificantly reduce dependency load as compared to React/Vue. **Minified JQuery + Axios:** 36.6KB + misc. external loads.
+
+After exploring my options, I decided to go with JQuery. For such a small web app, it was important to keep the dependencies to an absolute minimum, and JQuery + Axios at 36.6KB, let me do exactly that. In the future, though, if upgradeability where to be kept in mind, a framework similar to VueJS (or Mithral if looking for extreme dependency savings) should be used.
 
 ## Code breakdown
+This is the fancy section for developers and the people assessing this solution at Shopify :bowtie:! The uncompressed versions of the files also include this breakdown in more depth.
+
+Since it's redundant to discuss the breakdown of the HTML & CSS, those comments have been kept in their respective files [here](https://github.com/Anish-Agnihotri/toronto-waste-wizard/blob/master/index.html) and [here](https://github.com/Anish-Agnihotri/toronto-waste-wizard/blob/master/assets/stylesheet.css). Thus, the following, is a line-by-line breakdown of only the JQuery:
+
+1. 
 
 ## Results
 After successfully completing the challenge, I conducted a benchmark on the website (while still hosted on Github Pages), to analyze performance:
